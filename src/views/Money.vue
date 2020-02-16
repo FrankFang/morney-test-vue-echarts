@@ -9,6 +9,8 @@
       />
     </div>
     <Tags/>
+    {{count}}
+    <button @click="add">+1</button>
   </Layout>
 </template>
 
@@ -22,10 +24,21 @@
   import store from '@/store/index2.ts';
 
   @Component({
-    components: {Tags, FormItem, Types, NumberPad}
+    components: {Tags, FormItem, Types, NumberPad},
+    computed: {
+      count() {
+        return store.count;
+      },
+      recordList() {
+        return store.recordList;
+      }
+    }
   })
   export default class Money extends Vue {
-    recordList = store.recordList;
+    add() {
+      store.addCount();
+    }
+
     record: RecordItem = {
       tags: [], notes: '', type: '-', amount: 0
     };
