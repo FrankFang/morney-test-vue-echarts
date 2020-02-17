@@ -32,28 +32,28 @@
 
     created() {
       const id = this.$route.params.id;
+      console.log(id);
+      this.$store.commit('fetchTags');
       this.$store.commit('setCurrentTag', id);
       if (!this.tag) {
+        console.log('no tag');
         this.$router.replace('/404');
+      } else {
+        console.log('has tag');
       }
     }
 
     update(name: string) {
       if (this.tag) {
-        // TODO
-        // store.updateTag(this.tag.id, name);
+        this.$store.commit('updateTag', {
+          id: this.tag.id, name
+        });
       }
     }
 
     remove() {
       if (this.tag) {
-        // TODO
-        return;
-        // if (store.removeTag(this.tag.id)) {
-        //   this.$router.back();
-        // } else {
-        //   window.alert('删除失败');
-        // }
+        this.$store.commit('removeTag', this.tag.id);
       }
     }
 
