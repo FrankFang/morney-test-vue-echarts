@@ -20,6 +20,9 @@
       }
     }
   }
+  ::v-deep .interval-tabs-item {
+    height: 48px;
+  }
 </style>
 
 <script lang="ts">
@@ -36,7 +39,7 @@
     type = '-';
     interval = 'day';
     intervalList = intervalList;
-    recordTypeList = recordTypeList
+    recordTypeList = recordTypeList;
   }
 </script>
 
